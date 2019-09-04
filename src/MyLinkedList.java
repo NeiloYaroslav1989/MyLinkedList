@@ -46,22 +46,35 @@ public class MyLinkedList {
 
     public boolean remove (Object object) {
         Node current = first;
-        Node nextElement;
-        Node previousElement;
 
         while (current.hasNext()) {
             if (current.value.equals(object)) {
-                nextElement = current.next;
-                previousElement = current.previous;
-
-                nextElement.previous = previousElement;
-                previousElement.next = nextElement;
+                linkReplace(current);
+                doLinkNull(current);
+                break;
             }
             current = current.next;
+        }
+        if (last.value.equals(object)) {
+            linkReplace(current);
+            doLinkNull(current);
         }
 
         size--;
         return true;
+    }
+
+    private void linkReplace (Node current) {
+        Node nextElement = current.next;
+        Node previousElement = current.previous;
+
+        nextElement.previous = previousElement;
+        previousElement.next = nextElement;
+    }
+
+    private void doLinkNull (Node current) {
+        current.next = null;
+        current.previous = null;
     }
 
     public Object get (int index) {
@@ -101,7 +114,38 @@ public class MyLinkedList {
         return size;
     }
 
+    public boolean contains (Object object) {
+        Node current = first;
+        boolean isContains = false;
 
+        while (current.hasNext()) {
+            if (current.value.equals(object)) {
+                isContains = true;
+                break;
+            } else {
+                current = current.next;
+            }
+        }
+        if (last.value.equals(object)) {
+            isContains = true;
+        }
+        return isContains;
+    }
+
+//    public void clear () {
+//        Node current = first;
+//
+//        while (current.hasNext()) {
+//            Node next = current.next;
+//
+//            remove(current);
+//            current = current.next;
+//        }
+//        if (last.value.equals(object)) {
+//            linkReplace(current);
+//            doLinkNull(current);
+//        }
+//    }
 
 
 

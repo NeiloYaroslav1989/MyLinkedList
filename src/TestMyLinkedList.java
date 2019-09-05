@@ -17,6 +17,10 @@ public class TestMyLinkedList {
 
         System.out.println(myLinkedList.contains(0));
 
+        myLinkedList.clear();
+        System.out.println("Size = " + myLinkedList.size());
+
+
 
 
 

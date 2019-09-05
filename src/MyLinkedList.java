@@ -12,6 +12,10 @@ public class MyLinkedList {
         private boolean hasNext() {
             return this.next != null;
         }
+
+        private boolean hasPrevious() {
+            return this.previous != null;
+        }
     }
 
     public Node getNext(Node node) {
@@ -132,21 +136,18 @@ public class MyLinkedList {
         return isContains;
     }
 
-//    public void clear () {
-//        Node current = first;
-//
-//        while (current.hasNext()) {
-//            Node next = current.next;
-//
-//            remove(current);
-//            current = current.next;
-//        }
-//        if (last.value.equals(object)) {
-//            linkReplace(current);
-//            doLinkNull(current);
-//        }
-//    }
+    public void clear () {
+        Node current = last;
+        Node previous = last.previous;
 
-
-
+        while (current != null || previous != null) {
+            previous = current.previous;
+            current.next = null;
+            current.previous = null;
+            current = previous;
+        }
+        first = null;
+        last = null;
+        size = 0;
+    }
 }

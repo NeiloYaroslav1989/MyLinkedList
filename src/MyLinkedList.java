@@ -82,6 +82,7 @@ public class MyLinkedList {
     }
 
     public Object get (int index) {
+
         Node element = first;
         int indexElement = 0;
 
@@ -92,6 +93,35 @@ public class MyLinkedList {
             element = element.next;
             indexElement++;
         }
+        return element.value;
+    }
+
+    public Object getDuplexSearch (int index) {
+        int halfSize = size / 2;
+        Node element;
+
+        if (index <= halfSize) {
+            int elementIndex = 0;
+            element = first;
+            while (element.hasNext()) {
+                if (index == elementIndex) {
+                    break;
+                }
+                element = element.next;
+                elementIndex++;
+            }
+        } else {
+            element = last;
+            int elementIndex = size - 1;
+            while (element.hasPrevious()) {
+                if (index == elementIndex) {
+                    break;
+                }
+                element = element.previous;
+                elementIndex--;
+            }
+        }
+
         return element.value;
     }
 

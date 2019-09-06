@@ -11,11 +11,14 @@ public class TestMyLinkedList {
         myLinkedList.add(5); //index = 4
 
         System.out.println("Size = " + myLinkedList.size());
-        myLinkedList.remove(3);
-        System.out.println(myLinkedList.get(2));
-        System.out.println("Size = " + myLinkedList.size());
+        System.out.println("get: " + myLinkedList.get(3));
 
+
+        System.out.println("getDuplex: " + myLinkedList.getDuplexSearch(3));
         System.out.println(myLinkedList.contains(0));
+
+        myLinkedList.remove(3);
+        System.out.println("Size = " + myLinkedList.size());
 
         myLinkedList.clear();
         System.out.println("Size = " + myLinkedList.size());
